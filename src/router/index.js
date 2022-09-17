@@ -16,6 +16,11 @@ const routes = [
     component: () => import('../views/BloodSugar.vue')
   },
   {
+    path: '/energy',
+    name: 'energy',
+    component: () => import('../views/Energy.vue')
+  },
+  {
     path: '/about',
     name: 'about',
 
