@@ -18,12 +18,7 @@ export default {
     data() {
         return {
             baseOptions: {
-                chart: {
-
-                },
-                title: {
-                    text: 'Systolic'
-                },
+                
                 xaxis: {
                     type: 'datetime',
                     title: {
@@ -49,6 +44,13 @@ export default {
         systolicOptions() {
             return {
                 ...this.baseOptions,
+                chart: {
+                    id: 'systolic',
+                    group: 'bloodPressure',
+                },
+                title: {
+                    text: 'Systolic'
+                },
                 yaxis: {
                     min: 80,
                     max: 170,
@@ -110,6 +112,13 @@ export default {
         diastolicOptions() {
             return {
                 ...this.baseOptions,
+                chart: {
+                    id: 'diastolic',
+                    group: 'bloodPressure',
+                },
+                title: {
+                    text: 'Diastolic'
+                },
                 yaxis: {
                     min: 20,
                     max: 140,
