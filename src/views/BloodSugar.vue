@@ -4,7 +4,7 @@
       <v-row>
         <v-col>
           <v-toolbar-title>
-            Blood sugar level
+            Blood sugar levels
           </v-toolbar-title>
         </v-col>
         <v-spacer></v-spacer>
