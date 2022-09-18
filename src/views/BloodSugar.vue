@@ -53,7 +53,18 @@
     <v-card-text>
       <FedBloogSugar :points="fedPoints" />
     </v-card-text>
+    <v-snackbar :color="snackbar.color" v-model="snackbar.show">
+      {{ snackbar.text }}
+    
+      <template v-slot:action="{ attrs }">
+        <v-btn text dark v-bind="attrs" @click="snackbar.show = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
   </v-card>
+  
 </template>
 
 <script>
@@ -74,7 +85,13 @@ export default {
       fasted: false,
       points: [],
       state: null,
-      states: ['fasting', 'fed', 'random']
+      states: ['fasting', 'fed', 'random'],
+      snackbar: {
+        show: false,
+        text: null,
+        color: 'green',
+      },
+
       
     }
   },
@@ -92,9 +109,20 @@ export default {
         const params = { tags: `state:${this.state}`}
 
         await this.axios.post(route, body, { params })
+
+        this.snackbar.text = 'Measurement registered'
+        this.snackbar.color = 'green'
+        this.snackbar.show = true
+
+        this.state = null
+        this.bloodSugarLevel = 0
+
         this.get_data()
       } catch (error) {
         console.error(error)
+        this.snackbar.text = 'Registration failed'
+        this.snackbar.color = 'red'
+        this.snackbar.show = true
       }
       finally {
         this.submitting = false
