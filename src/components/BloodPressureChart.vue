@@ -52,7 +52,7 @@ export default {
                     text: 'Systolic'
                 },
                 yaxis: {
-                    min: 80,
+                    min: 70,
                     max: 170,
                     title: {
                         text: 'mmHg'
