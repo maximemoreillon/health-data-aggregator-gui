@@ -63,13 +63,13 @@ export default {
 
                         {
                             y: 0,
-                            y2: 120,
+                            y2: 90,
                             borderColor: '#C00000',
                             fillColor: '#C0000044',
 
                         },
                         {
-                            y: 120,
+                            y: 90,
                             borderColor: '#c00000',
                             label: {
                                 borderColor: '#c00000',
