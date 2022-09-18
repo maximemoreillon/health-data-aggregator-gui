@@ -35,10 +35,13 @@
             <v-text-field v-model.number="bloodSugarLevel" label="Blood sugar level" suffix="mmol/L" />
           </v-col>
           <v-col cols="auto">
-            <v-checkbox label="Fasted" v-model="fasted" />
+            <v-select
+              :items="states"
+              v-model="state"
+              label="State"/>
           </v-col>
           <v-col cols="auto">
-            <v-btn type="submit" :loading="submitting">Register</v-btn>
+            <v-btn type="submit" :disabled="!valid" :loading="submitting">Register</v-btn>
           </v-col>
         </v-row>
       </v-form>
@@ -63,6 +66,8 @@ export default {
       submitting: false,
       fasted: false,
       points: [],
+      state: null,
+      states: ['fasting', 'fed', 'random']
       
     }
   },
@@ -76,10 +81,8 @@ export default {
         const route = '/measurements/bloodsugar'
         const body = { bloodSugarLevel: this.bloodSugarLevel }
 
-        // Tag usage not yet decided
-        const state = this.fasted ? 'fasted' : 'fed'
-        // const testType = this.testType
-        const params = { tags: [`fasted:${this.fasted}`, `state:${state}`]}
+        // Tag usage not fully decided yet
+        const params = { tags: `state:${this.state}`}
 
         await this.axios.post(route, body, { params })
         this.get_data()
@@ -118,7 +121,10 @@ export default {
   },
   computed: {
     fastingPoints(){
-      return this.points.filter(p => p.fasted === 'true')
+      return this.points.filter(p => p.state === 'fasted')
+    },
+    valid() {
+      return !!this.state
     }
   }
 }
