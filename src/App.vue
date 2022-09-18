@@ -1,5 +1,5 @@
 <template>
-  <AppTemplate :options="options" @user="get_user($event)">
+  <AppTemplate :options="options">
 
     <template v-slot:nav>
       <v-list dense nav>
@@ -42,9 +42,7 @@ export default {
   }),
 
   methods: {
-    get_user(user) {
-      console.log(user)
-    }
+
   }
 };
 </script>

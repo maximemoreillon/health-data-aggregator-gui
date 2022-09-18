@@ -32,7 +32,7 @@
       <v-form @submit.prevent="submit()">
         <v-row align="baseline">
           <v-col>
-            <v-text-field v-model.number="bloodSugarLevel" label="Blood sugar level" suffix="UNIT" />
+            <v-text-field v-model.number="bloodSugarLevel" label="Blood sugar level" suffix="mmol/L" />
           </v-col>
           <v-col cols="auto">
             <v-checkbox label="Fasted" v-model="fasted" />
@@ -44,29 +44,26 @@
       </v-form>
     </v-card-text>
     <v-card-text>
-      <apexchart type="line" :options="options" :series="series"></apexchart>
+      <FastingBloogSugar :points="fastingPoints" />
     </v-card-text>
   </v-card>
 </template>
 
 <script>
 
+import FastingBloogSugar from '@/components/FastingBloogSugar.vue'
 export default {
   name: 'BloodSugar',
+  components: {
+    FastingBloogSugar
+  },
   data(){
     return {
       bloodSugarLevel: 0,
       submitting: false,
       fasted: false,
       points: [],
-      options: {
-        chart: {
-          id: 'Blood sugar levels'
-        },
-        xaxis: {
-          type: 'datetime'
-        }
-      },
+      
     }
   },
   mounted(){
@@ -78,7 +75,13 @@ export default {
       try {
         const route = '/measurements/bloodsugar'
         const body = { bloodSugarLevel: this.bloodSugarLevel }
-        await this.axios.post(route, body)
+
+        // Tag usage not yet decided
+        const state = this.fasted ? 'fasted' : 'fed'
+        // const testType = this.testType
+        const params = { tags: [`fasted:${this.fasted}`, `state:${state}`]}
+
+        await this.axios.post(route, body, { params })
         this.get_data()
       } catch (error) {
         console.error(error)
@@ -110,19 +113,12 @@ export default {
         console.error(error)
       }
 
-    }
+    },
+
   },
   computed: {
-    series(){
-
-      const data = this.points.map( ({_time, _value}) => ({
-        x: new Date(_time).getTime(),
-        y: _value,
-      }))
-
-      return [
-        { name: 'Blood sugar level', data },
-      ]
+    fastingPoints(){
+      return this.points.filter(p => p.fasted === 'true')
     }
   }
 }
