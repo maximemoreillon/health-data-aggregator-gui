@@ -36,28 +36,56 @@ export default {
                 annotations: {
                     yaxis: [
                         {
-                            y: 5.6,
-                            borderColor: 'orange',
+                            y: 0,
+                            y2: 4,
+                            borderColor: '#C00000',
+                            fillColor: '#C0000022',
                             label: {
-                                borderColor: 'orange',
+                                borderColor: '#C00000',
                                 style: {
                                     color: '#fff',
-                                    background: 'orange'
+                                    background: '#C00000'
                                 },
-                                text: 'Prediabetes'
+                                text: 'Hypoglycemia'
+                            }
+                        },
+                        {
+                            y: 5.6,
+                            borderColor: '#c0c000',
+                            label: {
+                                borderColor: '#c0c000',
+                                style: {
+                                    color: '#fff',
+                                    background: '#c0c000'
+                                },
+                                text: 'Prediabetes',
+                                // textAnchor: 'start'
+                            }
+                        },
+                        {
+                            y: 5.6,
+                            y2: 7,
+                            borderColor: '#c0c000',
+                            fillColor: '#c0c00022',
+                        },
+                        {
+                            y: 7,
+                            borderColor: 'C00000',
+                            label: {
+                                borderColor: '#C00000',
+                                style: {
+                                    color: '#fff',
+                                    background: '#C00000'
+                                },
+                                text: 'Diabetes',
                             }
                         },
                         {
                             y: 7,
-                            borderColor: 'red',
-                            label: {
-                                borderColor: 'red',
-                                style: {
-                                    color: '#fff',
-                                    background: 'red'
-                                },
-                                text: 'Diabetes'
-                            }
+                            y2: 1000,
+                            borderColor: '#C00000',
+                            fillColor: '#C0000044',
+
                         },
 
                     ]
