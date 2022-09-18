@@ -1,6 +1,6 @@
 module.exports = {
   pwa: {
-    name: 'Finances',
+    name: 'Health',
     themeColor: '#444444',
   },
   transpileDependencies: [
