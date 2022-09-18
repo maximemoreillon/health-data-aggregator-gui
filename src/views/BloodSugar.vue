@@ -46,8 +46,12 @@
         </v-row>
       </v-form>
     </v-card-text>
+
     <v-card-text>
       <FastingBloogSugar :points="fastingPoints" />
+    </v-card-text>
+    <v-card-text>
+      <FedBloogSugar :points="fedPoints" />
     </v-card-text>
   </v-card>
 </template>
@@ -55,10 +59,13 @@
 <script>
 
 import FastingBloogSugar from '@/components/FastingBloogSugar.vue'
+import FedBloogSugar from '@/components/FedBloogSugar.vue'
+
 export default {
   name: 'BloodSugar',
   components: {
-    FastingBloogSugar
+    FastingBloogSugar,
+    FedBloogSugar
   },
   data(){
     return {
@@ -121,7 +128,10 @@ export default {
   },
   computed: {
     fastingPoints(){
-      return this.points.filter(p => p.state === 'fasted')
+      return this.points.filter(p => p.state === 'fasting')
+    },
+    fedPoints(){
+      return this.points.filter(p => p.state === 'fed')
     },
     valid() {
       return !!this.state
