@@ -38,7 +38,7 @@
             <v-checkbox label="Fasted" v-model="fasted" />
           </v-col>
           <v-col cols="auto">
-            <v-btn type="submit" :loading="submitting">Submit</v-btn>
+            <v-btn type="submit" :loading="submitting">Register</v-btn>
           </v-col>
         </v-row>
       </v-form>

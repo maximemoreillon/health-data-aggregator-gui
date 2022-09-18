@@ -35,7 +35,8 @@ export default {
     },
     nav: [
       { title: 'Home', to: { name: 'home' }, icon: 'mdi-home' },
-      { title: 'Blood sugar', to: { name: 'bloodSugar' }, icon: 'mdi-diabetes' },
+      { title: 'Blood sugar levels', to: { name: 'bloodSugar' }, icon: 'mdi-diabetes' },
+      { title: 'Blood pressure', to: { name: 'bloodPressure' }, icon: 'mdi-water' },
       { title: 'Energy', to: { name: 'energy' }, icon: 'mdi-weight-lifter' },
       { title: 'About', to: { name: 'about' }, icon: 'mdi-information-outline' },
     ]

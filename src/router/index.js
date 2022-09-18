@@ -16,6 +16,11 @@ const routes = [
     component: () => import('../views/BloodSugar.vue')
   },
   {
+    path: '/bloodPressure',
+    name: 'bloodPressure',
+    component: () => import('../views/BloodPressure.vue')
+  },
+  {
     path: '/energy',
     name: 'energy',
     component: () => import('../views/Energy.vue')

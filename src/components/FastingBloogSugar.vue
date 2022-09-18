@@ -27,6 +27,8 @@ export default {
                     }
                 },
                 yaxis: {
+                    min: 3,
+                    max: 8,
                     title: {
                         text: 'Level [mmol/L]'
                     }
@@ -35,16 +37,29 @@ export default {
                     yaxis: [
                         {
                             y: 5.6,
-                            borderColor: '#c00000',
+                            borderColor: 'orange',
                             label: {
-                                borderColor: '#c00000',
+                                borderColor: 'orange',
                                 style: {
                                     color: '#fff',
-                                    background: '#c00000'
+                                    background: 'orange'
                                 },
                                 text: 'Prediabetes'
                             }
-                        }
+                        },
+                        {
+                            y: 7,
+                            borderColor: 'red',
+                            label: {
+                                borderColor: 'red',
+                                style: {
+                                    color: '#fff',
+                                    background: 'red'
+                                },
+                                text: 'Diabetes'
+                            }
+                        },
+
                     ]
                 }
             },
