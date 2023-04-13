@@ -8,11 +8,9 @@ variables:
   CONTAINER_IMAGE_TAGGED: ${DOCKER_HUB_USERNAME}/${APPLICATION_NAME}:${CI_COMMIT_SHORT_SHA}
   K8S_INGRESS_HOST: health.home.maximemoreillon.com
 
-
 image: moreillon/ci-dind
 services:
   - name: docker:19.03.12-dind
-
 
 build:
   only:
@@ -33,8 +31,6 @@ build:
     # cleanup
     - docker image rm ${CONTAINER_IMAGE}
     - docker image rm ${CONTAINER_IMAGE_TAGGED}
-
-
 
 deploy:
   stage: deploy
